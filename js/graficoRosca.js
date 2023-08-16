@@ -1,5 +1,3 @@
-google.charts.load("current", { packages: ["corechart"], language: "pt" });
-
 function desenharRosca() {
   var tabela = new google.visualization.DataTable();
   tabela.addColumn("string", "categorias");

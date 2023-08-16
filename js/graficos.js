@@ -1,5 +1,3 @@
-google.charts.load("current", { packages: ["corechart"], language: "pt" });
-
 function desenharGraficos() {
   var tabela = new google.visualization.DataTable();
   tabela.addColumn("string", "categorias");
