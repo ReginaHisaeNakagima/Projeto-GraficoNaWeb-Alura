@@ -58,7 +58,12 @@ function desenharGraficos() {
     title: "Gastos por mês",
     width: 650,
     height: 300,
-    vAxis: { format: "currency" },
+    vAxis: {
+      format: "currency",
+      gridlines: { color: "transparent" },
+    },
+    curveType: "function",
+    legend: "none",
   };
 
   var grafico = new google.visualization.LineChart(
