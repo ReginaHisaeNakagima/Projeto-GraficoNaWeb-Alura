@@ -1,4 +1,4 @@
-google.charts.load("current", { packages: ["corechart"] });
+google.charts.load("current", { packages: ["corechart"], language: "pt" });
 
 function desenharPizza() {
   var tabela = new google.visualization.DataTable();

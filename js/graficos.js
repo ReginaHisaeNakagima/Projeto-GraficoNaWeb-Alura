@@ -1,6 +1,6 @@
-google.charts.load("current", { packages: ["corechart"] });
+google.charts.load("current", { packages: ["corechart"], language: "pt" });
 
-function desenharPizza3D() {
+function desenharGraficos() {
   var tabela = new google.visualization.DataTable();
   tabela.addColumn("string", "categorias");
   tabela.addColumn("number", "valores");
@@ -35,6 +35,36 @@ function desenharPizza3D() {
     document.getElementById("graficoPizza3D")
   );
   grafico.draw(tabela, opcoes);
+
+  tabela = new google.visualization.DataTable();
+  tabela.addColumn("string", "mês");
+  tabela.addColumn("number", "gastos");
+  tabela.addRows([
+    ["jan", 800],
+    ["fev", 400],
+    ["mar", 1100],
+    ["abr", 400],
+    ["mai", 500],
+    ["jun", 750],
+    ["jul", 1500],
+    ["ago", 650],
+    ["set", 850],
+    ["out", 400],
+    ["nov", 1000],
+    ["dez", 720],
+  ]);
+
+  var opcoes = {
+    title: "Gastos por mês",
+    width: 650,
+    height: 300,
+    vAxis: { format: "currency" },
+  };
+
+  var grafico = new google.visualization.LineChart(
+    document.getElementById("graficoLinha")
+  );
+  grafico.draw(tabela, opcoes);
 }
 
-google.charts.setOnLoadCallback(desenharPizza3D);
+google.charts.setOnLoadCallback(desenharGraficos);
