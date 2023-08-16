@@ -15,11 +15,20 @@ function desenharPizza3D() {
 
   var opcoes = {
     title: "Tipos de Gastos",
-    height: 300,
+    height: 400,
     width: 900,
     is3D: true,
     legend: "labeled",
     pieSliceText: "value",
+    //colors: ["red", "grey", "yellow", "blue", "pink", "purple"],
+    slices: {
+      0: {},
+      1: { color: "gray" },
+      2: { color: "#a6a6a6" },
+      3: { color: "gray" },
+      4: { offset: 0.2 },
+      5: { color: "gray" },
+    },
   };
 
   var grafico = new google.visualization.PieChart(
