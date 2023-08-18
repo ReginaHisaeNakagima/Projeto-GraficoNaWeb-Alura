@@ -1,8 +1,10 @@
 function desenharGraficos() {
   //gráfico de pizza 3D
   var tabela = new google.visualization.DataTable();
+  //colunas  da tabela
   tabela.addColumn("string", "categorias");
   tabela.addColumn("number", "valores");
+  //linhas da tabela
   tabela.addRows([
     ["Educação", 2000],
     ["Transporte", 500],
@@ -11,7 +13,7 @@ function desenharGraficos() {
     ["Cartão de crédito", 900],
     ["Alimentação", 260],
   ]);
-
+  //opcoes que customizam o gráfico
   var opcoes = {
     title: "Tipos de Gastos",
     height: 400,
@@ -29,7 +31,7 @@ function desenharGraficos() {
       5: { color: "gray" },
     },
   };
-
+  //desenhando grafico
   var grafico = new google.visualization.PieChart(
     document.getElementById("graficoPizza3D")
   );
@@ -37,8 +39,10 @@ function desenharGraficos() {
 
   //gráfico de linha
   tabela = new google.visualization.DataTable();
+
   tabela.addColumn("string", "mês");
   tabela.addColumn("number", "gastos");
+
   tabela.addRows([
     ["jan", 800],
     ["fev", 400],
@@ -107,10 +111,12 @@ function desenharGraficos() {
 
   //grafico coluna surpresa
   var tabela = new google.visualization.DataTable();
+
   tabela.addColumn("string", "categorias");
   tabela.addColumn("number", "valores");
   tabela.addColumn({ type: "number", role: "annotation" });
   tabela.addColumn({ type: "string", role: "style" });
+
   tabela.addRows([
     ["Educação", 2000, 2000, "blue"],
     ["Transporte", 500, 500, "grey"],
@@ -135,10 +141,12 @@ function desenharGraficos() {
 
   //grafico de barras
   var tabela = new google.visualization.DataTable();
+
   tabela.addColumn("string", "categorias");
   tabela.addColumn("number", "valores");
   tabela.addColumn({ type: "string", role: "annotation" });
   tabela.addColumn({ type: "string", role: "style" });
+
   tabela.addRows([
     ["Educação", 2000, "R$2.000,00", "blue"],
     ["Transporte", 500, "R$500,00", "grey"],
@@ -147,7 +155,7 @@ function desenharGraficos() {
     ["Cartão de crédito", 900, "R$900,00", "#8904B1"],
     ["Alimentação", 260, "R$260,00", "grey"],
   ]);
-
+  //ordenando a tabela pela coluna de índice 1, ordem decrescente
   tabela.sort([{ column: 1, desc: true }]);
 
   var opcoes = {
