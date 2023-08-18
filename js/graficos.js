@@ -66,44 +66,71 @@ function desenharGraficos() {
     legend: "none",
   };
 
+  //gráfico de coluna
   var grafico = new google.visualization.LineChart(
     document.getElementById("graficoLinha")
   );
   grafico.draw(tabela, opcoes);
+
+  var tabela = google.visualization.arrayToDataTable([
+    ["Mês", "Entrada", "Saída"],
+    ["jan", 2500, 1000],
+    ["fev", 1000, 500],
+    ["mar", 3000, 1300],
+    ["abr", 1500, 1700],
+    ["mai", 5000, 2250],
+    ["jun", 3567, 3000],
+    ["jul", 3452, 1468],
+    ["ago", 1833, 5250],
+    ["set", 1800, 1000],
+    ["out", 1800, 1000],
+    ["nov", 3569, 1500],
+    ["dez", 3000, 1740],
+  ]);
+
+  var opcoes = {
+    title: "Entradas e saídas da conta",
+    width: 800,
+    height: 400,
+    vAxis: {
+      gridlines: { color: "transparent" },
+      format: "currency",
+      title: "Valores",
+    },
+    hAxis: { title: "Mês" },
+  };
+
+  var grafico = new google.visualization.ColumnChart(
+    document.getElementById("graficoColuna")
+  );
+  grafico.draw(tabela, opcoes);
+
+  //grafico coluna surpresa
+  var tabela = new google.visualization.DataTable();
+  tabela.addColumn("string", "categorias");
+  tabela.addColumn("number", "valores");
+  tabela.addColumn({ type: "number", role: "annotation" });
+  tabela.addRows([
+    ["Educação", 2000, 2000],
+    ["Transporte", 500, 500],
+    ["Lazer", 230, 230],
+    ["Saúde", 50, 50],
+    ["Cartão de crédito", 900, 900],
+    ["Alimentação", 260, 260],
+  ]);
+
+  var opcoes = {
+    title: "Tipos de Gastos",
+    height: 400,
+    width: 800,
+    vAxis: { gridlines: { count: 0 }, textPosition: "none" },
+    legend: "none",
+  };
+
+  var grafico = new google.visualization.ColumnChart(
+    document.getElementById("graficoColunaSurpresa")
+  );
+  grafico.draw(tabela, opcoes);
 }
-
-//gráfico de colunas
-var tabela = google.visualization.arrayToDataTable([
-  ["Mês", "Entrada", "Saída"],
-  ["jan", 2500, 1000],
-  ["fev", 1000, 500],
-  ["mar", 3000, 1300],
-  ["abr", 1500, 1700],
-  ["mai", 5000, 2250],
-  ["jun", 3567, 3000],
-  ["jul", 3452, 1468],
-  ["ago", 1833, 5250],
-  ["set", 1800, 1000],
-  ["out", 1800, 1000],
-  ["nov", 3569, 1500],
-  ["dez", 3000, 1740],
-]);
-
-var opcoes = {
-  title: "Entradas e saídas da conta",
-  width: 800,
-  height: 400,
-  vAxis: {
-    gridlines: { color: "transparent" },
-    format: "currency",
-    title: "Valores",
-  },
-  hAxis: { title: "Mês" },
-};
-
-var grafico = new google.visualization.ColumnChart(
-  document.getElementById("graficoColuna")
-);
-grafico.draw(tabela, opcoes);
 
 google.charts.setOnLoadCallback(desenharGraficos);
