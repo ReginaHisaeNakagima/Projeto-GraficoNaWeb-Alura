@@ -140,23 +140,33 @@ function desenharGraficos() {
   grafico.draw(tabela, opcoes);
 
   //grafico de barras
-  var tabela = new google.visualization.DataTable();
+  var dadosJson = $.ajax({
+    url: "https://gist.githubusercontent.com/ReginaHisaeNakagima/4534a8cb163933b3d065498baca8b7a1/raw/a07d909b7eebb975f25036058b910e7440c772c4/dados.json",
+    dataType: "json",
+    async: false,
+  }).responseText;
 
-  tabela.addColumn("string", "categorias");
-  tabela.addColumn("number", "valores");
-  tabela.addColumn({ type: "string", role: "annotation" });
-  tabela.addColumn({ type: "string", role: "style" });
+  var tabela = new google.visualization.DataTable(dadosJson);
 
-  tabela.addRows([
-    ["Educação", 2000, "R$2.000,00", "blue"],
-    ["Transporte", 500, "R$500,00", "grey"],
-    ["Lazer", 230, "R$230,00", "grey"],
-    ["Saúde", 50, "R$50,00", "grey"],
-    ["Cartão de crédito", 900, "R$900,00", "#8904B1"],
-    ["Alimentação", 260, "R$260,00", "grey"],
-  ]);
+  // tabela.addColumn("string", "categorias");
+  // tabela.addColumn("number", "valores");
+  // tabela.addColumn({ type: "string", role: "annotation" });
+  // tabela.addColumn({ type: "string", role: "style" });
+
+  // tabela.addRows([
+  //   ["Educação", 2000, "R$2.000,00", "blue"],
+  //   ["Transporte", 500, "R$500,00", "grey"],
+  //   ["Lazer", 230, "R$230,00", "grey"],
+  //   ["Saúde", 50, "R$50,00", "grey"],
+  //   ["Cartão de crédito", 900, "R$900,00", "#8904B1"],
+  //   ["Alimentação", 260, "R$260,00", "grey"],
+  // ]);
+
   //ordenando a tabela pela coluna de índice 1, ordem decrescente
   tabela.sort([{ column: 1, desc: true }]);
+
+  // var conversao = tabela.toJSON();
+  // console.log(conversao);
 
   var opcoes = {
     title: "Tipos de Gastos",
@@ -175,6 +185,32 @@ function desenharGraficos() {
   var grafico = new google.visualization.BarChart(
     document.getElementById("graficoBarra")
   );
+  grafico.draw(tabela, opcoes);
+
+  //gráfico de barras com arquivo json
+  var dadosJson = $.ajax({
+    url: "https://gist.githubusercontent.com/ReginaHisaeNakagima/6fb31a17ca37381e3b0a8b419fa390c4/raw/3594714f93ab6309c2e4761b388eadadac069615/dados.json",
+    dataType: "json",
+    async: false,
+  }).responseText;
+
+  var tabela = new google.visualization.DataTable(dadosJson);
+
+  tabela.sort([{ column: 1, desc: true }]);
+
+  var opcoes = {
+    title: "Usuários e Poupanças",
+    height: 800,
+    width: 800,
+    legend: "none",
+    hAxis: { gridlines: { color: "transparent" }, textPosition: "none" },
+    annotations: { alwaysOutside: true },
+  };
+
+  var grafico = new google.visualization.BarChart(
+    document.getElementById("graficoBarrasJson")
+  );
+
   grafico.draw(tabela, opcoes);
 }
 
